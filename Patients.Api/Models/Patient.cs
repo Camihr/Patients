@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Patients.Api.Models
 {
     [Table("Pacientes")]
-    public class Patient
+    public class Patient : ModelBase
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,12 +23,6 @@ namespace Patients.Api.Models
         public int DoctorId { get; set; }
         [Column("medicotra")]
         public Person Doctor { get; set; }
-
-        [Column("feregistro")]
-        public DateTime Created { get; set; }
-
-        [Column("febaja")]
-        public DateTime? Deleted { get; set; }
 
         [MaxLength(150)]
         [Column("cdusuario")]

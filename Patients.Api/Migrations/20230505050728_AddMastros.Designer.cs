@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Patients.Api.Data;
 
@@ -11,9 +12,10 @@ using Patients.Api.Data;
 namespace Patients.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230505050728_AddMastros")]
+    partial class AddMastros
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -362,6 +364,11 @@ namespace Patients.Api.Migrations
                         .HasColumnType("nvarchar(200)")
                         .HasColumnName("dsemail");
 
+                    b.Property<string>("Gender")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnName("cdgenero");
+
                     b.Property<string>("LastNames")
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)")
@@ -371,6 +378,11 @@ namespace Patients.Api.Migrations
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)")
                         .HasColumnName("dsnombres");
+
+                    b.Property<string>("PersonType")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnName("cdtipo");
 
                     b.Property<string>("Phone")
                         .HasMaxLength(20)
@@ -396,24 +408,6 @@ namespace Patients.Api.Migrations
                     b.HasIndex("Names");
 
                     b.ToTable("Personas");
-                });
-
-            modelBuilder.Entity("Patients.Api.Models.PersonDataMaster", b =>
-                {
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int")
-                        .HasColumnName("nmid_persona");
-
-                    b.Property<string>("DataMasterId")
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)")
-                        .HasColumnName("nmdato");
-
-                    b.HasKey("PersonId", "DataMasterId");
-
-                    b.HasIndex("DataMasterId");
-
-                    b.ToTable("PersonasDataMaestras");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -470,7 +464,7 @@ namespace Patients.Api.Migrations
             modelBuilder.Entity("Patients.Api.Models.DataMaster", b =>
                 {
                     b.HasOne("Patients.Api.Models.Master", "Master")
-                        .WithMany("DataMasters")
+                        .WithMany()
                         .HasForeignKey("MasterId");
 
                     b.Navigation("Master");
@@ -493,40 +487,6 @@ namespace Patients.Api.Migrations
                     b.Navigation("Doctor");
 
                     b.Navigation("Person");
-                });
-
-            modelBuilder.Entity("Patients.Api.Models.PersonDataMaster", b =>
-                {
-                    b.HasOne("Patients.Api.Models.DataMaster", "DataMaster")
-                        .WithMany("PersonsDataMasters")
-                        .HasForeignKey("DataMasterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Patients.Api.Models.Person", "Person")
-                        .WithMany("PersonsDataMasters")
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DataMaster");
-
-                    b.Navigation("Person");
-                });
-
-            modelBuilder.Entity("Patients.Api.Models.DataMaster", b =>
-                {
-                    b.Navigation("PersonsDataMasters");
-                });
-
-            modelBuilder.Entity("Patients.Api.Models.Master", b =>
-                {
-                    b.Navigation("DataMasters");
-                });
-
-            modelBuilder.Entity("Patients.Api.Models.Person", b =>
-                {
-                    b.Navigation("PersonsDataMasters");
                 });
 #pragma warning restore 612, 618
         }

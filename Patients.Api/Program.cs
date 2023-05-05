@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Patients.Api.Data;
+using Patients.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,16 +8,12 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -31,7 +28,10 @@ app.UseCors(x => x
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
 app.MapControllers();
+
+var scope = app.Services.CreateScope();
+var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+context.CreateInitialMasters();
 
 app.Run();

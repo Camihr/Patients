@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Patients.Api.Models
 {
     [Table("Personas")]
-    public class Person
+    public class Person : ModelBase
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -27,22 +27,6 @@ namespace Patients.Api.Models
 
         [Column("fenacimiento", TypeName = "date")]
         public DateTime Born { get; set; }
-
-        [MaxLength(10)]
-        [Column("cdtipo")]
-        public string PersonType { get; set; }
-        //Setear con maestro de tipos
-
-        [MaxLength(10)]
-        [Column("cdgenero")]
-        public string Gender { get; set; }
-        //Setear con maestro de géneros
-
-        [Column("feregistro")]
-        public DateTime Created { get; set; }
-        
-        [Column("febaja")]
-        public DateTime? Deleted { get; set; }
 
         [MaxLength(150)]
         [Column("cdusuario")]
@@ -67,5 +51,7 @@ namespace Patients.Api.Models
         [MaxLength(200)]
         [Column("dsemail")]
         public string Email { get; set; }
+
+        public List<PersonDataMaster> PersonsDataMasters { get; set; }
     }
 }
