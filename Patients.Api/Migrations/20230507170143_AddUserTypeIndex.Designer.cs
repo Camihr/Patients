@@ -12,8 +12,8 @@ using Patients.Api.Data;
 namespace Patients.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230505032519_AddPersonasAndPacientes")]
-    partial class AddPersonasAndPacientes
+    [Migration("20230507170143_AddUserTypeIndex")]
+    partial class AddUserTypeIndex
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -222,6 +222,119 @@ namespace Patients.Api.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Patients.Api.Models.DataMaster", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)")
+                        .HasColumnName("nmdato");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("feregistro");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("febaja");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("dsdato");
+
+                    b.Property<string>("MasterId")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)")
+                        .HasColumnName("nmmaestro");
+
+                    b.Property<DateTime>("Updated")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("feactulizacion");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MasterId");
+
+                    b.ToTable("DataMaestra");
+                });
+
+            modelBuilder.Entity("Patients.Api.Models.Master", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)")
+                        .HasColumnName("nmmaestro");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("feregistro");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("febaja");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("dsmaestro");
+
+                    b.Property<DateTime>("Updated")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("feactulizacion");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Maestras");
+                });
+
+            modelBuilder.Entity("Patients.Api.Models.Patient", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("nmid");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Condition")
+                        .HasMaxLength(20)
+                        .HasColumnType("text")
+                        .HasColumnName("condicion");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("feregistro");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("febaja");
+
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int")
+                        .HasColumnName("nmid_medicotra");
+
+                    b.Property<int>("PersonId")
+                        .HasColumnType("int")
+                        .HasColumnName("nmid_persona");
+
+                    b.Property<DateTime>("Updated")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("feactulizacion");
+
+                    b.Property<string>("User")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)")
+                        .HasColumnName("cdusuario");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("PersonId");
+
+                    b.ToTable("Pacientes");
+                });
+
             modelBuilder.Entity("Patients.Api.Models.Person", b =>
                 {
                     b.Property<int>("Id")
@@ -278,11 +391,6 @@ namespace Patients.Api.Migrations
                         .HasColumnType("nvarchar(60)")
                         .HasColumnName("dsnombres");
 
-                    b.Property<string>("PersonType")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)")
-                        .HasColumnName("cdtipo");
-
                     b.Property<string>("Phone")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
@@ -293,10 +401,19 @@ namespace Patients.Api.Migrations
                         .HasColumnType("nvarchar(500)")
                         .HasColumnName("dsphoto");
 
+                    b.Property<DateTime>("Updated")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("feactulizacion");
+
                     b.Property<string>("User")
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)")
                         .HasColumnName("cdusuario");
+
+                    b.Property<string>("UserType")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnName("cdtipo");
 
                     b.HasKey("Id");
 
@@ -305,6 +422,8 @@ namespace Patients.Api.Migrations
                     b.HasIndex("Document");
 
                     b.HasIndex("Names");
+
+                    b.HasIndex("UserType");
 
                     b.ToTable("Personas");
                 });
@@ -358,6 +477,39 @@ namespace Patients.Api.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Patients.Api.Models.DataMaster", b =>
+                {
+                    b.HasOne("Patients.Api.Models.Master", "Master")
+                        .WithMany("DataMasters")
+                        .HasForeignKey("MasterId");
+
+                    b.Navigation("Master");
+                });
+
+            modelBuilder.Entity("Patients.Api.Models.Patient", b =>
+                {
+                    b.HasOne("Patients.Api.Models.Person", "Doctor")
+                        .WithMany()
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Patients.Api.Models.Person", "Person")
+                        .WithMany()
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Person");
+                });
+
+            modelBuilder.Entity("Patients.Api.Models.Master", b =>
+                {
+                    b.Navigation("DataMasters");
                 });
 #pragma warning restore 612, 618
         }

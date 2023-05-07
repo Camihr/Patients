@@ -21,7 +21,5 @@ namespace Patients.Api.Models
         [MaxLength(100)]
         [Column("dsdato")]
         public string Description { get; set; }
-
-        public List<PersonDataMaster> PersonsDataMasters { get; set; }
     }
 }

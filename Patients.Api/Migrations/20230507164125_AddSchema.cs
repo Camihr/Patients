@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Patients.Api.Migrations
 {
-    public partial class AddPersonasAndPacientes : Migration
+    public partial class AddSchema : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -49,6 +49,21 @@ namespace Patients.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Maestras",
+                columns: table => new
+                {
+                    nmmaestro = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    dsmaestro = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    feregistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    feactulizacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    febaja = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Maestras", x => x.nmmaestro);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Personas",
                 columns: table => new
                 {
@@ -60,14 +75,15 @@ namespace Patients.Api.Migrations
                     fenacimiento = table.Column<DateTime>(type: "date", nullable: false),
                     cdtipo = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
                     cdgenero = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
-                    feregistro = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    febaja = table.Column<DateTime>(type: "datetime2", nullable: true),
                     cdusuario = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
                     dsdireccion = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     dsphoto = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     cdtelefono_fijo = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     cdtelefono_movil = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    dsemail = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true)
+                    dsemail = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    feregistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    feactulizacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    febaja = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -180,6 +196,58 @@ namespace Patients.Api.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "DataMaestra",
+                columns: table => new
+                {
+                    nmdato = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    nmmaestro = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    dsdato = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    feregistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    feactulizacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    febaja = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DataMaestra", x => x.nmdato);
+                    table.ForeignKey(
+                        name: "FK_DataMaestra_Maestras_nmmaestro",
+                        column: x => x.nmmaestro,
+                        principalTable: "Maestras",
+                        principalColumn: "nmmaestro");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Pacientes",
+                columns: table => new
+                {
+                    nmid = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    nmid_persona = table.Column<int>(type: "int", nullable: false),
+                    nmid_medicotra = table.Column<int>(type: "int", nullable: false),
+                    cdusuario = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    condicion = table.Column<string>(type: "text", maxLength: 20, nullable: true),
+                    feregistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    feactulizacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    febaja = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pacientes", x => x.nmid);
+                    table.ForeignKey(
+                        name: "FK_Pacientes_Personas_nmid_medicotra",
+                        column: x => x.nmid_medicotra,
+                        principalTable: "Personas",
+                        principalColumn: "nmid",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Pacientes_Personas_nmid_persona",
+                        column: x => x.nmid_persona,
+                        principalTable: "Personas",
+                        principalColumn: "nmid",
+                        onDelete: ReferentialAction.NoAction);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -220,6 +288,21 @@ namespace Patients.Api.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DataMaestra_nmmaestro",
+                table: "DataMaestra",
+                column: "nmmaestro");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pacientes_nmid_medicotra",
+                table: "Pacientes",
+                column: "nmid_medicotra");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pacientes_nmid_persona",
+                table: "Pacientes",
+                column: "nmid_persona");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Personas_cddocument",
                 table: "Personas",
                 column: "cddocument");
@@ -253,13 +336,22 @@ namespace Patients.Api.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Personas");
+                name: "DataMaestra");
+
+            migrationBuilder.DropTable(
+                name: "Pacientes");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Maestras");
+
+            migrationBuilder.DropTable(
+                name: "Personas");
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -28,6 +27,14 @@ namespace Patients.Api.Models
         [Column("fenacimiento", TypeName = "date")]
         public DateTime Born { get; set; }
 
+        [MaxLength(10)]
+        [Column("cdtipo")]
+        public string UserType { get; set; }
+
+        [MaxLength(10)]
+        [Column("cdgenero")]
+        public string Gender { get; set; }
+
         [MaxLength(150)]
         [Column("cdusuario")]
         public string User { get; set; }
@@ -50,8 +57,6 @@ namespace Patients.Api.Models
 
         [MaxLength(200)]
         [Column("dsemail")]
-        public string Email { get; set; }
-
-        public List<PersonDataMaster> PersonsDataMasters { get; set; }
+        public string Email { get; set; }       
     }
 }

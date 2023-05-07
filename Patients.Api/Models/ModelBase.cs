@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
 
 namespace Patients.Api.Models
 {
@@ -7,6 +6,9 @@ namespace Patients.Api.Models
     {
         [Column("feregistro")]
         public DateTime Created { get; set; }
+        
+        [Column("feactulizacion")]
+        public DateTime Updated { get; set; }
 
         [Column("febaja")]
         public DateTime? Deleted { get; set; }
