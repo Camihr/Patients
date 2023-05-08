@@ -1,0 +1,94 @@
+@import "../styles/vars";
+
+.wrapper {
+    @include flex-column-center;
+    gap: 20px;
+    padding: 50px 20px 20px 20px;
+
+    .welcome-text {
+        @include flex-column-center;
+        text-align: center;
+
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 7px;
+        }
+    }
+
+    .manager-options {
+        padding-top: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+
+        .option {
+            width: 200px;
+            background: $gray1;
+            border-radius: 0.6rem;
+            box-shadow: 2px 2px 20px 0 rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            cursor: pointer;
+           background: white;
+
+            .option-image {
+                height: 180px;
+                width: 100%;
+
+                &.user-image{
+                    background: url(../assets/images/bg_users.jpg) no-repeat center;
+                     background-size: cover;
+                }
+                &.patient-image{
+                    background: url(../assets/images/bg_patiens.jpg) no-repeat center;
+                     background-size: cover;
+                }
+
+               
+            }
+
+            .option-text {
+                border-top: 1px solid $gray4;
+                height: 40px;
+                width: 100%;
+                @include flex-center-center;
+            }
+
+            &:hover{
+                box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+                transition: all ease-in-out .3s;
+
+                .option-image {
+                    filter: grayscale(0%);
+                }
+    
+            }
+
+            &.disabled {
+                cursor: auto;
+                opacity: .7;
+                box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+
+                .option-image{
+                    filter: grayscale(100%);
+                }
+
+                &:hover{
+                    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+                    filter: grayscale(100%);
+                }
+
+                p {
+                    color: $gray2;
+                }
+            }
+        }
+
+        @include middle{
+            .option{
+                width: 100%;
+            }
+        }
+    }
+}
