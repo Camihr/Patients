@@ -5,12 +5,12 @@ import { ResponseMode } from '../models/responseModel';
 import { API_URL } from '../consts/consts';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MastersService {
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getMasters(){
-    return this.http.get<ResponseMode<Master[]>>(`${API_URL}Masters`)
+  getMasters() {
+    return this.http.get<ResponseMode<Master[]>>(`${API_URL}Masters`);
   }
 }

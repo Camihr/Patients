@@ -6,12 +6,10 @@ describe('SvgComponent', () => {
   let component: SvgComponent;
   let fixture: ComponentFixture<SvgComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ SvgComponent ]
-    })
-    .compileComponents();
-
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [SvgComponent]
+    });
     fixture = TestBed.createComponent(SvgComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

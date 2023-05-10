@@ -4,13 +4,14 @@ import { ResponseMode } from '../models/responseModel';
 import { API_URL } from '../consts/consts';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PersonsService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http : HttpClient) { }
-
-  patientsEnables(){
-    return this.http.get<ResponseMode<boolean>>(`${API_URL}Persons/PatientsEnables`)
+  patientsEnables() {
+    return this.http.get<ResponseMode<boolean>>(
+      `${API_URL}Persons/PatientsEnables`
+    );
   }
 }

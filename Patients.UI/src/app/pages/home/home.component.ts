@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonsService } from 'src/app/services/persons.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,7 @@ import { PersonsService } from 'src/app/services/persons.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private personsService: PersonsService) {}
+  constructor(private personsService: PersonsService, private router: Router) {}
 
   ngOnInit() {
     this.personsService.patientsEnables().subscribe((data) => {
@@ -18,4 +19,8 @@ export class HomeComponent implements OnInit {
   }
 
   arePatientsEnables: boolean = false;
+
+  navigateToPersons() {
+    this.router.navigate(['/persons']);
+  }
 }

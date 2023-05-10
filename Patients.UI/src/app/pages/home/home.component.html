@@ -1,14 +1,13 @@
 <div class="wrapper">
   <app-svg class="home-logo" name="logo"></app-svg>
   <div class="welcome-text">
-    <h2>Bienvenid@ a Medical,</h2>
     <p *ngIf="!arePatientsEnables">
-      para gestionar pacientes debes contar con usuarios tipo paciente y tipo
-      médico
+      <b>Bienvenid@,</b> para gestionar pacientes<br />
+      debes contar con usuarios tipo paciente y tipo médico
     </p>
   </div>
   <div class="manager-options">
-    <div class="option">
+    <div class="option" (click)="navigateToPersons()">
       <div class="option-image user-image"></div>
       <div class="option-text">
         <p>Gestión de usuarios</p>

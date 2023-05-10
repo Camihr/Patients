@@ -3,14 +3,14 @@
 .wrapper {
   @include flex-column-center;
   gap: 20px;
-  padding: 50px 20px 20px 20px;
+  padding: 150px 20px 20px 20px;
 
   .welcome-text {
     @include flex-column-center;
     text-align: center;
 
-    h2 {
-      font-size: 1.6rem;
+    p {
+      font-size: 1.2rem;
       margin-bottom: 7px;
     }
   }
@@ -37,11 +37,12 @@
         width: 100%;
 
         &.user-image {
-          background: url(../assets/images/bg_users.jpg) no-repeat center;
+          background: url(../../../assets/images/bg_users.jpg) no-repeat center;
           background-size: cover;
         }
         &.patient-image {
-          background: url(../assets/images/bg_patiens.jpg) no-repeat center;
+          background: url(../../../assets/images/bg_patiens.jpg) no-repeat
+            center;
           background-size: cover;
         }
       }

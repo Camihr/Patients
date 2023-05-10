@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { PersonsComponent } from './pages/persons/persons.component';
+import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PatientsComponent } from './pages/patients/patients.component';
-import { HomeComponent } from './pages/home/home.component';
+import { PersonsComponent } from './pages/persons/persons.component';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: HomeComponent,
   },
   {
