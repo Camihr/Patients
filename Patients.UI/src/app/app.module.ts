@@ -8,6 +8,7 @@ import { SvgComponent } from './components/svg/svg.component';
 import { PersonsComponent } from './pages/persons/persons.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PatientsComponent } from './pages/patients/patients.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PatientsComponent } from './pages/patients/patients.component';
     SvgComponent,
     PersonsComponent,
     NotFoundComponent,
-    PatientsComponent
+    PatientsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
