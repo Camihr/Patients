@@ -1,3 +1,3 @@
 import { Person } from '../models/person';
 
-export interface CreatePerson extends Omit<Person, 'id'> {}
+export interface CreatePerson extends Omit<Person, 'id' | 'created'> {}

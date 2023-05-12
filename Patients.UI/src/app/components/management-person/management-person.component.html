@@ -1,50 +1,68 @@
-<p>
-  <input type="text" [formControl]="nameField" />
-</p>
-
-<form action="">
-  <div>
+<form (ngSubmit)="save()" #myForm="ngForm" class="form-colum">
+  <div class="form-item" ngModelGroup="myGroup">
     <label for="">Documento</label>
-    <input type="text" />
+    <input
+      [(ngModel)]="person.document"
+      #document="ngModel"
+      name="document"
+      type="text"
+    />
+    <span
+      *ngIf="documentValid !== '' && document.touched"
+      class="validation-message"
+      >{{ documentValid }}</span
+    >
   </div>
-  <div>
-    <label for="">Documento</label>
-    <input type="text" />
+  <div class="form-item">
+    <label for="">Nombres</label>
+    <input
+      [(ngModel)]="person.names"
+      #names="ngModel"
+      name="names"
+      type="text"
+    />
   </div>
-  <div>
-    <label for="">Documento</label>
-    <input type="text" />
+  <div class="form-item">
+    <label for="">Apellidos</label>
+    <input [(ngModel)]="person.lastNames" type="text" name="lastNames" />
   </div>
-  <div>
-    <label for="">Documento</label>
-    <input type="text" />
+  <div class="form-item">
+    <label for="">Fecha de nacimiento</label>
+    <input [(ngModel)]="person.born" type="date" name="born" />
   </div>
-  <div>
-    <label for="">Documento</label>
-    <input type="text" />
+  <div class="form-item">
+    <label for="">Tipo de usuario</label>
+    <select [(ngModel)]="person.userType" name="userType"></select>
   </div>
-  <div>
-    <label for="">Documento</label>
-    <input type="text" />
+  <div class="form-item">
+    <label for="">Género</label>
+    <select [(ngModel)]="person.gender" name="gender"></select>
   </div>
-  <div>
-    <label for="">Documento</label>
-    <input type="text" />
+  <div class="form-item">
+    <label for="">Usuario</label>
+    <input [(ngModel)]="person.user" type="text" name="user" />
   </div>
-  <div>
-    <label for="">Documento</label>
-    <input type="text" />
+  <div class="form-item">
+    <label for="">Dirección</label>
+    <input [(ngModel)]="person.address" type="text" name="address" />
   </div>
-  <div>
-    <label for="">Documento</label>
-    <input type="text" />
+  <div class="form-item">
+    <label for="">Url de foto</label>
+    <input [(ngModel)]="person.photo" type="text" name="photo" />
   </div>
-  <div>
-    <label for="">Documento</label>
-    <input type="text" />
+  <div class="form-item">
+    <label for="">Teléfono fijo</label>
+    <input [(ngModel)]="person.phone" type="text" name="phone" />
   </div>
-  <div>
-    <label for="">Documento</label>
-    <input type="text" />
+  <div class="form-item">
+    <label for="">Teléfono móvil</label>
+    <input [(ngModel)]="person.cellPhone" type="text" name="cellPhone" />
+  </div>
+  <div class="form-item">
+    <label for="">Correo electrónico</label>
+    <input [(ngModel)]="person.email" type="text" name="email" />
+  </div>
+  <div class="footer-form">
+    <button type="submit">Guardar</button>
   </div>
 </form>
