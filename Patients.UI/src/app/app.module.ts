@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SvgComponent } from './components/svg/svg.component';
@@ -8,6 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PatientsComponent } from './pages/patients/patients.component';
 import { PersonsComponent } from './pages/persons/persons.component';
+import { ManagementPersonComponent } from './components/management-person/management-person.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +19,14 @@ import { PersonsComponent } from './pages/persons/persons.component';
     NotFoundComponent,
     PatientsComponent,
     PersonsComponent,
+    ManagementPersonComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

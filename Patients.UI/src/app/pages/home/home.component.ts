@@ -11,11 +11,16 @@ export class HomeComponent implements OnInit {
   constructor(private personsService: PersonsService, private router: Router) {}
 
   ngOnInit() {
-    this.personsService.patientsEnables().subscribe((data) => {
-      if (data != null) {
-        this.arePatientsEnables = data.data;
+    this.personsService.patientsEnables().subscribe(
+      (data) => {
+        if (data != null) {
+          this.arePatientsEnables = data.data;
+        }
+      },
+      (errorMessage) => {
+        console.error(errorMessage);
       }
-    });
+    );
   }
 
   arePatientsEnables: boolean = false;
