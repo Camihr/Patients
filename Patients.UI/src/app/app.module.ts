@@ -10,6 +10,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PatientsComponent } from './pages/patients/patients.component';
 import { PersonsComponent } from './pages/persons/persons.component';
 import { ManagementPersonComponent } from './components/management-person/management-person.component';
+import { ManagementPatientComponent } from './components/management-patient/management-patient.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ManagementPersonComponent } from './components/management-person/manage
     PatientsComponent,
     PersonsComponent,
     ManagementPersonComponent,
+    ManagementPatientComponent,
   ],
   imports: [
     BrowserModule,

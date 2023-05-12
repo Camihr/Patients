@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, Validators, Form } from '@angular/forms';
 import { CreatePerson } from '../../dtos/createPerson';
+import { MyValidators } from '../../utils/validators';
 
 @Component({
   selector: 'app-management-person',
@@ -8,8 +9,6 @@ import { CreatePerson } from '../../dtos/createPerson';
   styleUrls: ['./management-person.component.scss'],
 })
 export class ManagementPersonComponent {
-  constructor() {}
-
   person: CreatePerson = {
     document: '',
     names: '',
@@ -26,21 +25,28 @@ export class ManagementPersonComponent {
   };
 
   @ViewChild('document') document: any;
+  //@ViewChild('myForm') form: any;
 
   isFormValid: boolean = false;
 
   save() {
     if (!this.isFormValid) {
       this.document.control.markAsTouched();
+
+      // Object.keys(this.form.controls).forEach((key) => {
+      //   const control = this.form.controls[key];
+      //   control.markAsTouched();
+      // });
     }
   }
 
   get documentValid(): string {
-    if (this.person.document === '') {
-      this.isFormValid = false;
-      return 'Obligatorio';
-    }
-    return '';
+    return MyValidators.maxLength(this.person.document, 7);
+    // if (this.person.document === '') {
+    //   this.isFormValid = false;
+    //   return 'Obligatorio';
+    // }
+    // return '';
   }
   get namesValid(): string {
     if (this.person.names === '') {

@@ -16,6 +16,13 @@ export class MyValidators {
     }
     return null;
   }
+
+  static maxLength(text: string, count: number): string {
+    if (text.length > count) {
+      return `El texto no puede tener más de ${count} caracteres`;
+    }
+    return '';
+  }
 }
 
 function containsNumber(value: string): boolean {
