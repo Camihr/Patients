@@ -13,7 +13,7 @@ namespace Patients.Api.Controllers
     {
         private readonly IPersonsService personsService;
 
-        public PersonsController(IMapper mapper, IPersonsService personsService) : base(mapper) 
+        public PersonsController(IMapper mapper, IPersonsService personsService) : base(mapper)
         {
             this.personsService = personsService;
         }

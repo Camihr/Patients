@@ -14,3 +14,7 @@ export interface Person {
   email: string;
   created: Date;
 }
+
+export interface CreatePersonDTO extends Omit<Person, 'id' | 'created'> {}
+
+export interface UpdatePersonDTO extends Partial<CreatePersonDTO> {}

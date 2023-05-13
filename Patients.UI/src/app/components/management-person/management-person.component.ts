@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, Validators, Form } from '@angular/forms';
-import { CreatePerson } from '../../dtos/createPerson';
+import { CreatePersonDTO } from '../../models/person';
 import { MyValidators } from '../../utils/validators';
 
 @Component({
@@ -9,7 +9,7 @@ import { MyValidators } from '../../utils/validators';
   styleUrls: ['./management-person.component.scss'],
 })
 export class ManagementPersonComponent {
-  person: CreatePerson = {
+  person: CreatePersonDTO = {
     document: '',
     names: '',
     lastNames: '',

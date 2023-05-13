@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonsService } from 'src/app/services/persons.service';
 import { Router } from '@angular/router';
+import { UNKNOWN_ERROR } from '../../consts/consts';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +9,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private personsService: PersonsService, private router: Router) {}
+  constructor(private personsService: PersonsService, private router: Router) { }
 
   ngOnInit() {
     this.personsService.patientsEnables().subscribe(
-      (data) => {
-        if (data != null) {
-          this.arePatientsEnables = data.data;
-        }
+      data => {
+        this.arePatientsEnables = data.data;
       },
-      (errorMessage) => {
-        console.error(errorMessage);
+      error => {
+        console.error(error);
+        if (error.error.message != undefined) {
+          console.error(error.error.message);
+          console.error(error.error.exception);
+        }
+        else{
+          console.error(UNKNOWN_ERROR);
+        }
       }
     );
   }

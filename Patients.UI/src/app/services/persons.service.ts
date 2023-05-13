@@ -14,14 +14,6 @@ export class PersonsService {
   patientsEnables() {
     return this.http
       .get<ResponseMode<boolean>>(`${API_URL}Persons/PatientsEnables`)
-      .pipe(
-        catchError((error: HttpErrorResponse) => {
-          if (error.status === 5000) {
-            return throwError('Error inesparado');
-          }
-          return throwError('Error inesparado');
-        })
-      );
   }
 
   create(data: Person) {
