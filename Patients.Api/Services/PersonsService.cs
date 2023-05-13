@@ -16,8 +16,8 @@ namespace Patients.Api.Services
 
         public async Task<bool> PatientsEnables()
         {
-            return await Context.Users.AnyAsync(u => u.UserName.Equals(Consts.DOCTOR))
-                 && await Context.Users.AnyAsync(u => u.UserName.Equals(Consts.PATIENT));
+            return await Context.Persons.AnyAsync(u => u.UserType.Equals(Consts.DOCTOR))
+                 && await Context.Persons.AnyAsync(u => u.UserType.Equals(Consts.PATIENT));
         }
 
         public async Task<List<Person>> GetPersons()

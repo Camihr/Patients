@@ -38,8 +38,4 @@ app.UseAuthorization();
 app.UseErrorHandlingMiddleware();
 app.MapControllers();
 
-var scope = app.Services.CreateScope();
-var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-context.CreateInitialMasters();
-
 app.Run();
