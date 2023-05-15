@@ -5,6 +5,10 @@
   height: 40px;
 }
 
+.logo-header {
+  cursor: pointer;
+}
+
 .top-options {
   @include flex-spaceb-center;
   margin-bottom: 10px;

@@ -1,5 +1,6 @@
 <container-element [ngSwitch]="name">
   <svg
+    (click)="doClick()"
     *ngSwitchCase="'logo'"
     width="137"
     height="19"

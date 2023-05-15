@@ -1,68 +1,67 @@
-﻿@import 'vars.scss';
+﻿@import "vars.scss";
 
 * {
-    box-sizing: content-box;
-    margin: 0;
-	padding: 0;
-	list-style: none;
-	text-decoration: none;
-	border: none;
-	outline: none;
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
 }
-
 
 html {
-    font-family: $font-family;
-    font-size: 14px;
-    color: $gray1;
+  font-family: $font-family;
+  font-size: 14px;
+  color: $gray1;
 
-    body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        background: white;
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: $gray6;
 
-        a, .link {
-            color: $secondary;
-            text-decoration: none;
-            cursor: pointer;
+    a,
+    .link {
+      color: $secondary;
+      text-decoration: none;
+      cursor: pointer;
 
-            &:hover {
-                text-decoration: none;
-            }
-        }
-
-        h1:focus {
-            outline: none;
-        }
-
-        h2 {
-            font-size: 1.2rem;
-        }
-
-        h3 {
-            font-size: 1.1rem;
-        }
-
-        button {
-            line-height: 0;
-            cursor: pointer;
-            padding: 0;
-            margin: 0;
-            border: none;
-            outline: none;
-            background: transparent;
-            //-webkit-appearance: none !important;
-            outline: 0;
-        }
+      &:hover {
+        text-decoration: none;
+      }
     }
 
-    @include tablet {
-        font-size: 13px;
+    h1:focus {
+      outline: none;
     }
 
-    @include mobile {
-        font-size: 11px;
+    h2 {
+      font-size: 1.2rem;
     }
+
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    button {
+      line-height: 0;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+      border: none;
+      outline: none;
+      background: transparent;
+      //-webkit-appearance: none !important;
+      outline: 0;
+    }
+  }
+
+  @include tablet {
+    font-size: 13px;
+  }
+
+  @include mobile {
+    font-size: 11px;
+  }
 }
-

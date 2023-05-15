@@ -52,9 +52,9 @@ namespace Patients.Api.Services
             await Context.SaveChangesAsync();
         }
 
-        public async Task<bool> UpdatePerson(Person person)
+        public async Task<bool> UpdatePerson(Person person, int personId)
         {
-            var existingPerson = await Context.Persons.FindAsync(person.Id);
+            var existingPerson = await Context.Persons.FindAsync(personId);
 
             if (existingPerson == null) return false;
 

@@ -17,7 +17,7 @@
         public static string EMPLOYEE = "Empleado";
 
         public static string GENDER = "Género";
-        public static string FAMELE = "Memenino";
+        public static string FAMELE = "Femenino";
         public static string MALE = "Masculino";
         public static string ANOTHER = "Otro";
 

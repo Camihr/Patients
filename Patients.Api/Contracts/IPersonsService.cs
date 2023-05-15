@@ -11,6 +11,6 @@ namespace Patients.Api.Contracts
         Task<List<Person>> GetPersonsToExsitingPatient();
         Task<List<Person>> GetPersonsToNewPatient();
         Task<bool> PatientsEnables();
-        Task<bool> UpdatePerson(Person person);
+        Task<bool> UpdatePerson(Person person, int personId );
     }
 }

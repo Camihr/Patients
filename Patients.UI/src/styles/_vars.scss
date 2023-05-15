@@ -1,20 +1,21 @@
 ﻿/*Owner colors*/
-$primary: #2B75F6;
-$secondary: #5DCFC0;
-$danger: #F67446;
+$primary: #2b75f6;
+$secondary: #5dcfc0;
+$danger: #f67446;
 $success: $secondary;
 $cancel: #f2f2f2;
-$advertence: #FFC94C;
+$advertence: #ffc94c;
 $bg-brand: $primary;
 $bg-nav: $primary;
-$dark: rgba(0,0,0,.05);
-$light: rgba(255,255,255,1);
+$dark: rgba(0, 0, 0, 0.05);
+$light: rgba(255, 255, 255, 1);
 
 $gray1: #666;
-$gray2: #B3B3B3;
+$gray2: #b3b3b3;
 $gray3: #e6e6e6;
-$gray4: #F2F2F2;
+$gray4: #f2f2f2;
 $gray5: #999999;
+$gray6: #f2f2f2;
 
 /*Devices*/
 $mobile-width: 400px;
@@ -23,7 +24,7 @@ $tablet-width: 800px;
 $desktop-width: 1300px;
 
 /*Font*/
-$font-family: 'Quicksand', sans-serif;
+$font-family: "Quicksand", sans-serif;
 
 /*Sides sideBar*/
 $expand: 200px;
@@ -32,101 +33,96 @@ $no-expand: 60px;
 $radius: 3px;
 
 /*General shadow box*/
-$shadow: 2px 2px 0px 0px rgba(0,0,0,.1);
-
+$shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.1);
 
 //Flex rows ===============
 @mixin flex-center-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @mixin flex-end-center {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 @mixin flex-start-center {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 @mixin flex-end-center {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 @mixin flex-spaceb-center {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 //Flex columns ===============
 @mixin flex-column-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @mixin flex-column-start {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 @mixin flex-column-space {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-
 @mixin flex-colum-center-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 @mixin flex-column-reverse-center {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
 }
 
-
-
 @mixin shadow {
-    -webkit-box-shadow: $shadow;
-    box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+  box-shadow: $shadow;
 }
 
 @mixin mobile {
-    @media (max-width: #{$mobile-width}) {
-        @content;
-    }
+  @media (max-width: #{$mobile-width}) {
+    @content;
+  }
 }
 
 @mixin middle {
-    @media (max-width: #{$middle-width}) {
-        @content;
-    }
+  @media (max-width: #{$middle-width}) {
+    @content;
+  }
 }
 
 @mixin tablet {
-    @media (max-width: #{$tablet-width}) {
-        @content;
-    }
+  @media (max-width: #{$tablet-width}) {
+    @content;
+  }
 }
 
 @mixin desktop {
-    @media (max-width: #{$desktop-width}) {
-        @content;
-    }
+  @media (max-width: #{$desktop-width}) {
+    @content;
+  }
 }
-

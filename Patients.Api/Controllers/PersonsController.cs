@@ -65,10 +65,10 @@ namespace Patients.Api.Controllers
             return Ok();
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdatePerson(Person person)
+        [HttpPut("{personId}")]
+        public async Task<IActionResult> UpdatePerson(Person person, int personId)
         {
-            if (await personsService.UpdatePerson(person))
+            if (await personsService.UpdatePerson(person, personId))
             {
                 return Ok();
             }

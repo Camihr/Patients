@@ -15,6 +15,4 @@ export interface Person {
   created: Date;
 }
 
-export interface CreatePersonDTO extends Omit<Person, 'id' | 'created'> {}
-
-export interface UpdatePersonDTO extends Partial<CreatePersonDTO> {}
+export interface UpdatePersonDTO extends Partial<Person> {}

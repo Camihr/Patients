@@ -11,6 +11,11 @@ import { PatientsComponent } from './pages/patients/patients.component';
 import { PersonsComponent } from './pages/persons/persons.component';
 import { ManagementPersonComponent } from './components/management-person/management-person.component';
 import { ManagementPatientComponent } from './components/management-patient/management-patient.component';
+import { PopupComponent } from './components/popup/popup.component';
+import { HeaderComponent } from './components/header/header.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { AlertComponent } from './components/alert/alert.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +27,11 @@ import { ManagementPatientComponent } from './components/management-patient/mana
     PersonsComponent,
     ManagementPersonComponent,
     ManagementPatientComponent,
+    PopupComponent,
+    HeaderComponent,
+    LoaderComponent,
+    AlertComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,

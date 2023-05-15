@@ -17,11 +17,27 @@ export class MyValidators {
     return null;
   }
 
-  static maxLength(text: string, count: number): string {
-    if (text.length > count) {
-      return `El texto no puede tener más de ${count} caracteres`;
+  static maxLength(text: string | undefined, count: number): [boolean, string] {
+    if (text != undefined && text.length > count) {
+      return [true, `El texto no puede tener más de ${count} caracteres`];
     }
-    return '';
+    return [false, ''];
+  }
+
+  static requierd(text: string | undefined): [boolean, string] {
+    if (text === undefined || text === '') {
+      return [true, `El campo es obligatorio`];
+    }
+    return [false, ''];
+  }
+
+  static email(text: string | undefined): [boolean, string] {
+    const patern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (text != undefined && !patern.test(text)) {
+      return [true, `El campo no tiene el formato correcto`];
+    }
+    return [false, ''];
   }
 }
 

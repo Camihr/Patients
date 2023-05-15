@@ -1,0 +1,9 @@
+@import "../../../styles/vars";
+
+#header {
+  height: 50px;
+  padding: 0 20px;
+  @include flex-spaceb-center;
+  background: white;
+  border-bottom: 1px solid $gray3;
+}

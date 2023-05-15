@@ -18,9 +18,6 @@ select,
   font-size: 1rem;
   border-radius: $radius;
   font-display: $font-family;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 
   &::placeholder {
     color: $gray2;
@@ -169,10 +166,26 @@ input[type="radio"] {
   }
 }
 
-.form-colum {
+.form-column {
   width: 100%;
   @include flex-colum-center-center;
   gap: 10px;
+
+  > div {
+    width: 100%;
+  }
+}
+
+@function min($numbers...) {
+  @return m#{i}n(#{$numbers});
+}
+
+.form-grid {
+  width: 100%;
+  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  grid-auto-flow: dense;
 
   > div {
     width: 100%;

@@ -1,6 +1,6 @@
 @import "../../../styles/vars";
 
-.wrapper {
+#home {
   @include flex-column-center;
   gap: 20px;
   padding: 150px 20px 20px 20px;
@@ -10,8 +10,11 @@
     text-align: center;
 
     p {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       margin-bottom: 7px;
+      b {
+        color: $secondary;
+      }
     }
   }
 

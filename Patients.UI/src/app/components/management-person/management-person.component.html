@@ -1,68 +1,186 @@
-<form (ngSubmit)="save()" #myForm="ngForm" class="form-colum">
-  <div class="form-item" ngModelGroup="myGroup">
-    <label for="">Documento</label>
-    <input
-      [(ngModel)]="person.document"
-      #document="ngModel"
-      name="document"
-      type="text"
-    />
-    <span
-      *ngIf="documentValid !== '' && document.touched"
-      class="validation-message"
-      >{{ documentValid }}</span
-    >
-  </div>
-  <div class="form-item">
-    <label for="">Nombres</label>
-    <input
-      [(ngModel)]="person.names"
-      #names="ngModel"
-      name="names"
-      type="text"
-    />
-  </div>
-  <div class="form-item">
-    <label for="">Apellidos</label>
-    <input [(ngModel)]="person.lastNames" type="text" name="lastNames" />
-  </div>
-  <div class="form-item">
-    <label for="">Fecha de nacimiento</label>
-    <input [(ngModel)]="person.born" type="date" name="born" />
-  </div>
-  <div class="form-item">
-    <label for="">Tipo de usuario</label>
-    <select [(ngModel)]="person.userType" name="userType"></select>
-  </div>
-  <div class="form-item">
-    <label for="">Género</label>
-    <select [(ngModel)]="person.gender" name="gender"></select>
-  </div>
-  <div class="form-item">
-    <label for="">Usuario</label>
-    <input [(ngModel)]="person.user" type="text" name="user" />
-  </div>
-  <div class="form-item">
-    <label for="">Dirección</label>
-    <input [(ngModel)]="person.address" type="text" name="address" />
-  </div>
-  <div class="form-item">
-    <label for="">Url de foto</label>
-    <input [(ngModel)]="person.photo" type="text" name="photo" />
-  </div>
-  <div class="form-item">
-    <label for="">Teléfono fijo</label>
-    <input [(ngModel)]="person.phone" type="text" name="phone" />
-  </div>
-  <div class="form-item">
-    <label for="">Teléfono móvil</label>
-    <input [(ngModel)]="person.cellPhone" type="text" name="cellPhone" />
-  </div>
-  <div class="form-item">
-    <label for="">Correo electrónico</label>
-    <input [(ngModel)]="person.email" type="text" name="email" />
+<form (ngSubmit)="trySave()" #myForm="ngForm" class="form-column">
+  <div class="form-grid">
+    <div class="form-item">
+      <label for="">Nombres</label>
+      <input
+        [(ngModel)]="person.names"
+        #names="ngModel"
+        name="names"
+        type="text"
+      />
+      <span
+        *ngIf="namesValid !== '' && names.touched"
+        class="validation-message"
+        >{{ namesValid }}</span
+      >
+    </div>
+
+    <div class="form-item">
+      <label for="">Apellidos</label>
+      <input
+        [(ngModel)]="person.lastNames"
+        #lastNames="ngModel"
+        name="lastNames"
+        type="text"
+      />
+      <span
+        *ngIf="lastNamesValid !== '' && lastNames.touched"
+        class="validation-message"
+        >{{ lastNamesValid }}</span
+      >
+    </div>
+
+    <div class="form-item">
+      <label for="">Documento</label>
+      <input
+        [(ngModel)]="person.document"
+        #document="ngModel"
+        name="document"
+        type="text"
+      />
+      <span
+        *ngIf="documentValid !== '' && document.touched"
+        class="validation-message"
+        >{{ documentValid }}</span
+      >
+    </div>
+
+    <div class="form-item">
+      <label for="">Fecha de nacimiento {{ person.born }}</label>
+      <input
+        [(ngModel)]="person.born"
+        #born="ngModel"
+        name="born"
+        type="date"
+      />
+      <span
+        *ngIf="bornValid !== '' && born.touched"
+        class="validation-message"
+        >{{ bornValid }}</span
+      >
+    </div>
+
+    <div class="form-item">
+      <label for="">Tipo de usuario</label>
+      <select [(ngModel)]="person.userType" #userType="ngModel" name="userType">
+        <option *ngFor="let type of userTypesData" [value]="type.description">
+          {{ type.description }}
+        </option>
+      </select>
+      <span
+        *ngIf="userTypeValid !== '' && userType.touched"
+        class="validation-message"
+        >{{ userTypeValid }}</span
+      >
+    </div>
+
+    <div class="form-item">
+      <label for="">Género</label>
+      <select [(ngModel)]="person.gender" #gender="ngModel" name="gender">
+        <option *ngFor="let gender of gendersData" [value]="gender.description">
+          {{ gender.description }}
+        </option>
+      </select>
+      <span
+        *ngIf="genderValid !== '' && gender.touched"
+        class="validation-message"
+        >{{ genderValid }}</span
+      >
+    </div>
+
+    <div class="form-item">
+      <label for="">Usuario</label>
+      <input
+        [(ngModel)]="person.user"
+        #user="ngModel"
+        ngModel
+        name="user"
+        type="text"
+      />
+      <span
+        *ngIf="userValid !== '' && user.touched"
+        class="validation-message"
+        >{{ userValid }}</span
+      >
+    </div>
+
+    <div class="form-item">
+      <label for="">Dirección</label>
+      <input
+        [(ngModel)]="person.address"
+        #address="ngModel"
+        type="text"
+        name="address"
+      />
+      <span
+        *ngIf="addressValid !== '' && address.touched"
+        class="validation-message"
+        >{{ addressValid }}</span
+      >
+    </div>
+
+    <div class="form-item">
+      <label for="">Url de foto</label>
+      <input
+        [(ngModel)]="person.photo"
+        #photo="ngModel"
+        name="photo"
+        type="text"
+      />
+      <span
+        *ngIf="photoValid !== '' && photo.touched"
+        class="validation-message"
+        >{{ photoValid }}</span
+      >
+    </div>
+
+    <div class="form-item">
+      <label for="">Teléfono fijo</label>
+      <input
+        [(ngModel)]="person.phone"
+        #phone="ngModel"
+        name="phone"
+        type="text"
+      />
+      <span
+        *ngIf="phoneValid !== '' && phone.touched"
+        class="validation-message"
+        >{{ phoneValid }}</span
+      >
+    </div>
+
+    <div class="form-item">
+      <label for="">Teléfono móvil</label>
+      <input
+        [(ngModel)]="person.cellPhone"
+        #cellPhone="ngModel"
+        name="cellPhone"
+        type="text"
+      />
+      <span
+        *ngIf="cellPhoneValid !== '' && cellPhone.touched"
+        class="validation-message"
+        >{{ cellPhoneValid }}</span
+      >
+    </div>
+
+    <div class="form-item">
+      <label for="">Correo electrónico</label>
+      <input
+        [(ngModel)]="person.email"
+        #email="ngModel"
+        name="email"
+        type="text"
+      />
+      <span
+        *ngIf="emailValid !== '' && email.touched"
+        class="validation-message"
+        >{{ emailValid }}</span
+      >
+    </div>
   </div>
   <div class="footer-form">
-    <button type="submit">Guardar</button>
+    <app-button (click)="closePopup()">Cancelar</app-button>
+    <app-button [isSubmit]="true" btnStyle="secondary">Guardar</app-button>
   </div>
 </form>

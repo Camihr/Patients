@@ -1,17 +1,12 @@
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\appsettings.Development.json
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\appsettings.json
-C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Patients.Api.staticwebassets.runtime.json
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Patients.Api.exe
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Patients.Api.deps.json
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Patients.Api.runtimeconfig.json
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Patients.Api.dll
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Patients.Api.pdb
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Humanizer.dll
-C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
-C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -20,9 +15,6 @@ C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.EntityFrame
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll
-C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
-C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.Identity.Client.dll
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Repos\Personales\Patients\Patients.Api\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SvgComponent } from './svg.component';
 
 describe('SvgComponent', () => {
@@ -8,7 +7,7 @@ describe('SvgComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SvgComponent]
+      declarations: [SvgComponent],
     });
     fixture = TestBed.createComponent(SvgComponent);
     component = fixture.componentInstance;

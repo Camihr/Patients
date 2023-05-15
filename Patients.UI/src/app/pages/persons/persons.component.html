@@ -1,2 +1,57 @@
-<p>persons works!</p>
-<app-management-person></app-management-person>
+<div class="top-options">
+  <h2>Personas</h2>
+  <app-button (click)="openCreatePopup()" btnStyle="primary">
+    Crear usuario
+  </app-button>
+</div>
+
+<div class="box">
+  <table *ngIf="arePersons" class="table">
+    <thead>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Documento</th>
+      <th>Tipo</th>
+      <th>Género</th>
+      <th>Email</th>
+      <th>Móvil</th>
+      <th class="th-center">Editar</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of persons">
+        <td>{{ person.names }}</td>
+        <td>{{ person.lastNames }}</td>
+        <td>{{ person.document }}</td>
+        <td>{{ person.userType }}</td>
+        <td>{{ person.gender }}</td>
+        <td>{{ person.email }}</td>
+        <td>{{ person.cellPhone }}</td>
+        <td>
+          <button (click)="openUpdatePopup(person)" class="td-button">
+            Editar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="!arePersons">
+    <p style="text-align: center">
+      Aún no cuentas con usuarios, <b>¿qué tal si creas el primero?</b>
+    </p>
+  </div>
+</div>
+
+<app-popup
+  *ngIf="isManagerPersonVisible"
+  [maxWidth]="900"
+  [title]="popupTitle"
+  (close)="closePopup()"
+>
+  <app-management-person
+    (save)="savePerson()"
+    (close)="closePopup()"
+    [personToUpdate]="personToUpdate"
+    [gendersData]="gendersData"
+    [userTypesData]="userTypesData"
+  ></app-management-person>
+</app-popup>
