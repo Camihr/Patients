@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\c4cam\\source\\repos\\Patients\\Patients.Api\\Patients.Api.csproj": {}
+    "C:\\Repos\\Personales\\Patients\\Patients.Api\\Patients.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\c4cam\\source\\repos\\Patients\\Patients.Api\\Patients.Api.csproj": {
+    "C:\\Repos\\Personales\\Patients\\Patients.Api\\Patients.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\c4cam\\source\\repos\\Patients\\Patients.Api\\Patients.Api.csproj",
+        "projectUniqueName": "C:\\Repos\\Personales\\Patients\\Patients.Api\\Patients.Api.csproj",
         "projectName": "Patients.Api",
-        "projectPath": "C:\\Users\\c4cam\\source\\repos\\Patients\\Patients.Api\\Patients.Api.csproj",
-        "packagesPath": "C:\\Users\\c4cam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\c4cam\\source\\repos\\Patients\\Patients.Api\\obj\\",
+        "projectPath": "C:\\Repos\\Personales\\Patients\\Patients.Api\\Patients.Api.csproj",
+        "packagesPath": "C:\\Users\\Camilo\\.nuget\\packages\\",
+        "outputPath": "C:\\Repos\\Personales\\Patients\\Patients.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\c4cam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Camilo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
